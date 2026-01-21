@@ -9,7 +9,7 @@ G_A       = all_param.G_A;
 G_W_R     = all_param.G_W_R;  
 miu_A     = all_param.miu_A;  
 rho_2     = all_param.rho_2;  
-lamda_U   = all_param.lamda_U;
+lamda_U   = all_param.lamda_A;
 gamma_1   = all_param.gamma_1;
 Pt_Reader2Reader = all_param.Pt_Reader2Reader;
 
@@ -37,5 +37,6 @@ Pr_ReaderwithReader = Pt_Reader2Reader.*G_A.*G_W_R.*miu_A.*rho_2.*L;
 
 
 end
+
 
 
