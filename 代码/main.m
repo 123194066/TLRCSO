@@ -5,7 +5,7 @@ tic
  % parpool('local',4)
 N = 16; % 16个阅读器天线
 dim = N*2;
-SearchAgents_no = 100; % 子代个数
+SearchAgents_no = 100; % 
 Max_iteration = 500;
 ub1 = [30 30];
 lb1 = [0 0];
@@ -14,28 +14,28 @@ lb1 = repmat(lb1,[1,N])';
 ub2 = 30;
 lb2 = 0;
 
-% 参数结构体
 all_power_param.z_t = 1;% 标签位置
 all_power_param.z = 3.5;% 阅读器位置
 all_power_param.z_a = 1; % 终端位置
 all_power_param.G_T = 1.58;
-all_power_param.G_R = 4;
-all_power_param.G_A = 4;%不确定
-all_power_param.G_W_R = 4;
+all_power_param.G_R =  4;
+all_power_param.G_A = 1.2589;
+all_power_param.G_W_R = 1.2589;
 all_power_param.miu_T = 1;
-all_power_param.miu_A = 0.3;
+all_power_param.miu_A = 0.5;
 all_power_param.rho_1 = 0.5;
-all_power_param.rho_2 = 0.5;
+all_power_param.rho_2 = 1;
+all_power_param.lamda_A = 0.0517;   %5.8G的波长。 0.0517=3*10^8/(5.8*10^(9))
 all_power_param.lamda_U = 1/3;
 all_power_param.gamma_1 = -real(sqrt(0.1));
 all_power_param.tao = 0.5;
 all_power_param.Pt_Pow_Reader2Tag = 0.5;
-all_power_param.Pt_Reader2Reader = 0.5;
-all_power_param.Pt_ReaderwithAppterminal = 0.5;
+all_power_param.Pt_Reader2Reader = 0.002;
+all_power_param.Pt_ReaderwithAppterminal = 0.002;
 all_power_param.S1 = 10^-5;
 all_power_param.S2 = 10^-14;
-all_power_param.S3 = 10^-5.5;
-all_power_param.S4 = 10^-5.5;
+all_power_param.S3 = 10^-10;
+all_power_param.S4 = 10^-10;
 
 
 % 场景1：EMPCSOI45（无序，45个标签）
@@ -187,7 +187,7 @@ parfor i = 1:50
 %    MPCSO_cg_curve_mean=real(mean(MPCSO_cg_curve,1));
 %    BSA_cg_curve_mean=real(mean(BSA_cg_curve,1));
 
-                TLRCSO_cg_curve_mean=real(mean(TLRCSO_cg_curve,1));
+     TLRCSO_cg_curve_mean=real(mean(TLRCSO_cg_curve,1));
 %    EMPCSO1_cg_curve_mean=real(mean(EMPCSO1_cg_curve,1));
 %        EMPCSO2_cg_curve_mean=real(mean(EMPCSO2_cg_curve,1));
 %       EMPCSO3_cg_curve_mean=real(mean(EMPCSO3_cg_curve,1));
@@ -213,7 +213,7 @@ semilogy(TLRCSO_cg_curve_mean, "Color", "#000000", "LineWidth", 1.5);        % �
 %  semilogy(EMPCSO3_cg_curve_mean, "Color", "#DC143C", "LineWidth", 1.5);    % 猩红 - ESCSO_new
 %   semilogy(EMPCSO12_cg_curve_mean, "Color", "#1E90FF", "LineWidth", 1.5);   % 道奇蓝 - PSO
 % semilogy(EMPCSO13_cg_curve_mean, "Color", "#FF0000", "LineWidth", 1.5);          % 纯红 - CSO
-% semilogy(EMPCSO23_cg_curve_mean, "Color", "#228B22", "LineWidth", 1.5);          % 森林绿 - GWO  semilogy(PSO_cg_curve_mean, "Color", "#1E90FF", "LineWidth", 1.5);   % 道奇蓝 - PSO
+% semilogy(EMPCSO23_cg_curve_mean, "Color", "#228B22", "LineWidth", 1.5);          % 森林绿 - GWO 
  title('收敛曲线')
 xlabel('迭代次数');
 ylabel('适应度值');
@@ -261,3 +261,4 @@ hold off
 % total_time = toc;
 % fprintf('总运行时间：%.4f秒\n', total_time);
 % 
+
