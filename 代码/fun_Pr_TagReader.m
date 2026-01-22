@@ -38,7 +38,7 @@ L = (lamda_U./4./pi./LOS_dis_tag_reader_z).^2 ...
 % 计算接收功率
 Pr_TagFromReader = Pt_Pow_Reader2Tag.*G_T.*G_R.*miu_T.*rho_1.*L;
 
-Pr_ReaderFromTag = Pr_TagFromReader.*G_T.^2.*G_R.^2.*tao.*miu_T.*rho_1.*L.^2;
+Pr_ReaderFromTag = Pt_Pow_Reader2Tag.*G_T.^2.*G_R.^2.*tao.*miu_T.*rho_1.*L.^2;
 
 end
 
