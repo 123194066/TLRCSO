@@ -33,7 +33,7 @@ all_power_param.Pt_Pow_Reader2Tag = 0.5;
 all_power_param.Pt_Reader2Reader = 0.002;
 all_power_param.Pt_ReaderwithAppterminal = 0.002;
 all_power_param.S1 = 10^-5;
-all_power_param.S2 = 10^-14;
+all_power_param.S2 = 10^-12;
 all_power_param.S3 = 10^-10;
 all_power_param.S4 = 10^-10;
 
@@ -261,4 +261,5 @@ hold off
 % total_time = toc;
 % fprintf('总运行时间：%.4f秒\n', total_time);
 % 
+
 
